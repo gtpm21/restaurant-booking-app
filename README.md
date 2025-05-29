@@ -19,8 +19,9 @@
     * TypeScript
     * Axios (για HTTP requests)
     * React Navigation (για πλοήγηση)
-    * `@react-native-async-storage/async-storage` (για τοπική αποθήκευση του token)
-    * `@react-native-community/datetimepicker` (για επιλογή ημερομηνίας/ώρας)
+    * `@react-native-async-storage/async-storage` 
+    * `@react-native-community/datetimepicker` 
+    * `react-native-vector-icons` 
 * **Backend:**
     * Node.js
     * Express.js
