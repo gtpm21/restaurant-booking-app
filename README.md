@@ -96,7 +96,7 @@
 
 ### Frontend Setup
 
-1.  **Ρύθμιση Περιβάλλοντος:** Βεβαιωθείτε ότι έχετε ακολουθήσει τις οδηγίες εγκατάστασης για React Native CLI από την [επίσημη τεκμηρίωση](https://reactnative.dev/docs/environment-setup) (Development OS: Windows, Target OS: Android), λαμβάνοντας υπόψη ότι το SDK σας είναι στο `G:\Android\Sdk`.
+1.  **Ρύθμιση Περιβάλλοντος:** Βεβαιωθείτε ότι έχετε ακολουθήσει τις οδηγίες εγκατάστασης για React Native CLI από την [επίσημο documentation](https://reactnative.dev/docs/environment-setup) (Development OS: Windows, Target OS: Android), λαμβάνοντας υπόψη ότι το SDK σας είναι στο `G:\Android\Sdk`.
 2.  **Ρύθμιση Project:**
     * Ανοίξτε ένα terminal και πλοηγηθείτε στον φάκελο `frontend` του project (`G:\RestaurantApp\frontend`).
     * Βεβαιωθείτε ότι το αρχείο `android/local.properties` υπάρχει και περιέχει τη σωστή διαδρομή προς το SDK:
