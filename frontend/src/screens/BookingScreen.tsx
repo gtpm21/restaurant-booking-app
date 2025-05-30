@@ -5,6 +5,7 @@ import api from '../api/api';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { RootStackParamList } from '../navigation/AppNavigator';
 import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
+import LinearGradient from 'react-native-linear-gradient';
 
 type BookingScreenRouteProp = RouteProp<RootStackParamList, 'Booking'>;
 
@@ -22,7 +23,6 @@ const BookingScreen = () => {
   const [isBooking, setIsBooking] = useState(false);
 
   const formatDate = (d: Date): string => {
-    // Format YYYY-MM-DD
     const year = d.getFullYear();
     const month = (d.getMonth() + 1).toString().padStart(2, '0');
     const day = d.getDate().toString().padStart(2, '0');
@@ -30,14 +30,13 @@ const BookingScreen = () => {
   };
 
   const formatTime = (t: Date): string => {
-    // Format HH:MM:SS
     const hours = t.getHours().toString().padStart(2, '0');
     const minutes = t.getMinutes().toString().padStart(2, '0');
     return `${hours}:${minutes}:00`;
   };
 
   const onChangeDate = (event: DateTimePickerEvent, selectedDate?: Date) => {
-    setShowDatePicker(Platform.OS === 'ios'); // Στο iOS το picker παραμένει ανοιχτό, στο Android κλείνει
+    setShowDatePicker(Platform.OS === 'ios');
     if (selectedDate) {
       setDate(selectedDate);
     }
@@ -63,7 +62,7 @@ const BookingScreen = () => {
         Alert.alert('Error', 'Number of people must be a valid number greater than 0.');
         return;
     }
-    setIsBooking(true); // <-- Ξεκίνα το loading
+    setIsBooking(true);
     try {
         // ... (api.post) ...
         Alert.alert('Success!', '...');
@@ -101,6 +100,10 @@ const BookingScreen = () => {
   };
 
   return (
+        <LinearGradient
+          colors={['#3494E6', '#EC6EAD']}
+          style={styles.container}
+        >
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Book a Table at</Text>
       <Text style={styles.restaurantName}>{restaurantName}</Text>
@@ -113,9 +116,9 @@ const BookingScreen = () => {
           testID="datePicker"
           value={date}
           mode="date"
-          display="default" // Μπορεί να είναι 'spinner', 'calendar' σε Android
+          display="default"
           onChange={onChangeDate}
-          minimumDate={new Date()} // Δεν επιτρέπει παρελθοντικές ημερομηνίες
+          minimumDate={new Date()}
         />
       )}
       <Text style={styles.label}>Select Time:</Text>
@@ -128,7 +131,7 @@ const BookingScreen = () => {
           value={time}
           mode="time"
           is24Hour={true}
-          display="default" // Μπορεί να είναι 'spinner', 'clock' σε Android
+          display="default"
           onChange={onChangeTime}
         />
       )}
@@ -145,13 +148,13 @@ const BookingScreen = () => {
         {isBooking && <ActivityIndicator style={{marginTop: 10}} size="small" />}
       </View>
     </ScrollView>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    // justifyContent: 'center', // Αφαιρέθηκε για καλύτερη εμφάνιση με ScrollView
     padding: 20,
   },
   title: {
@@ -159,18 +162,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 5,
+    color: 'white',
   },
   restaurantName: {
     fontSize: 18,
     textAlign: 'center',
-    color: '#555',
+    color: 'white',
     marginBottom: 25,
   },
   label: {
     fontSize: 16,
     marginBottom: 8,
     marginTop: 15,
-    color: '#333',
+    color: 'white',
   },
   input: {
     height: 45,
