@@ -3,7 +3,7 @@ import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../api/api';
 import { useNavigation } from '@react-navigation/native';
-
+import LinearGradient from 'react-native-linear-gradient';
 
 type LoginScreenNavigationProp = any;
 
@@ -11,8 +11,6 @@ const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigation<LoginScreenNavigationProp>();
-
-
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -41,7 +39,11 @@ const LoginScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <LinearGradient
+      colors={['#3494E6', '#EC6EAD']}
+      style={styles.container}
+    >
+    <View style={styles.formContainer}>
       <Text style={styles.title}>Restaurant Booking</Text>
       <TextInput
         style={styles.input}
@@ -62,9 +64,10 @@ const LoginScreen = () => {
             <View style={{ marginTop: 10 }} />
       <Button
         title="Don't have an account? Register"
-        onPress={() => navigation.navigate('Register')} // Πλοήγηση στην RegisterScreen
+        onPress={() => navigation.navigate('Register')}
       />
     </View>
+        </LinearGradient>
   );
 };
 
@@ -74,20 +77,32 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 20,
   },
+  formContainer: {
+    padding: 20,
+    backgroundColor: 'rgba(0,0,0,0.1)',
+    borderRadius: 10,
+    marginHorizontal: 20,
+  },
   title: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: 30,
+    color: 'white',
   },
   input: {
-    height: 40,
-    borderColor: 'gray',
+    height: 50,
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    borderColor: 'rgba(255,255,255,0.5)',
+    color: 'white',
     borderWidth: 1,
-    marginBottom: 12,
-    paddingHorizontal: 10,
+    marginBottom: 15,
+    paddingHorizontal: 15,
     borderRadius: 5,
   },
+  buttonContainer: {
+    marginTop: 10,
+  }
 });
 
 export default LoginScreen;

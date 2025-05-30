@@ -80,7 +80,7 @@ const MainTabNavigator = () => {
       <Tab.Screen
         name="HomeTab"
         component={HomeScreen}
-        options={{ 
+        options={{
           title: 'Restaurants',
           tabBarIcon: renderRestaurantIcon,
           headerRight: HeaderLogoutButton,
