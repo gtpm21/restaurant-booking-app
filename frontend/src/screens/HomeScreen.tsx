@@ -16,8 +16,6 @@ interface Restaurant {
   image_url?: string;
 }
 
-// THIS IS A VERY OBVIOUS TEST CHANGE 12345 ABCDEFG
-
 const HomeScreen = () => {
   const navigation = useNavigation<HomeScreenNavigationProp>();
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
